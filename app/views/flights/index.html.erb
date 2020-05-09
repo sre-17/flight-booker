@@ -1,0 +1,29 @@
+<%= form_with url: flights_path ,local: true, method: "get" do |form| %>
+    <p>
+    <%= form.label :from %>
+    <%= form.collection_select(:from , Airport.all  , :id , :code) %>
+    </p>
+    
+    <p>
+    <%= form.label :to %>
+    <%= form.collection_select(:to , Airport.all  , :id , :code) %>
+    </p>
+    
+    <p>
+    <%= form.label :passengers %>
+    <%= form.select(:passengers , [ [1,1],[2,2] ,[3,3] , [4,4] ]) %>
+    </p>
+    
+    <p>
+    <%= form.select(:date , @date_array) %>
+    </p>
+    
+    <%= form.submit %>
+<% end %>
+
+<% if @flights.any? %>
+    <%= render 'booking' %>
+<% end %>
+
+
+

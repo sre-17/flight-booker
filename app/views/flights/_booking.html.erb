@@ -1,0 +1,9 @@
+<% @flights.each do |flight| %>
+    <% @flight = Flight.find(flight.id) %>
+    <%= form_with url: new_booking_path , local: true, method: :get do |form| %>
+        <%= form.radio_button(:flight_id , flight.id) %>
+        <%= form.label(:id , " From:  #{@flight.from_airport.code}   To: #{@flight.to_airport.code }  At: #{flight.start_time.strftime('%d-%m-%Y')}") %>
+        <%= form.hidden_field(:passengers , value: params[:passengers]) %>
+        <%= form.submit %>
+    <% end %>
+<% end %>
