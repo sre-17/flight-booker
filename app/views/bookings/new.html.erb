@@ -1,0 +1,18 @@
+<p>Date of journey: <%= @flight.start_time %></p>
+<p>From: <%=@flight.from_airport.code %>   To: <%=@flight.to_airport.code %></p>
+<p><em> FLIGHT ID: <%=@flight.id %></em></p>
+<%= form_with model: @booking , local: true do |f| %>
+    <%= hidden_field_tag(:flight_id , params[:flight_id]) %>
+    <%= f.fields_for :passengers do |p_form| %>
+        <p>
+            <%= p_form.label(:name , "Passenger Name") %>
+            <%= p_form.text_field(:name) %>
+        </p>
+        <p>
+            <%= p_form.label(:email ) %>
+            <%= p_form.email_field(:email) %>
+        </p>
+    <% end %>
+    <%= f.submit %>
+<% end %>
+
