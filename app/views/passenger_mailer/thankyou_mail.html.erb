@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    </head>
+    <body>
+        <h1>Your Ticket has been booked successfully</h1>
+        <p>Passenger Details: </p>
+        <ul>
+            <li>Name: <%= @passenger.name %></li>
+            <li>Email: <%= @passenger.email %></li>
+        </ul>
+        <p>Ticket Details: </p>
+        <ul>
+            <li>Booking ID: <%= @booking.id %></li>
+            <li>Flight ID: <%= @booking.flight_id %></li>
+            <li>From: <%= @flight.from_airport.code %>  To: <%= @flight.to_airport.code %> </li>
+            <li>Date of travel: <%= @flight.start_time.strftime("%d-%m-%Y") %></li>
+        </ul>
+        <p><b>Thank you for travelling with us.</b></p>
+        <p><b>Have a happy journey. </b></p>
+    </body>
+</html>

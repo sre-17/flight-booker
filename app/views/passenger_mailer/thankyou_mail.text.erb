@@ -1,0 +1,17 @@
+YOUR TICKET HAS BEEN BOOKED SUCCESSFULLY
+===============================
+
+Passenger Details: 
+    Name: <%= @passenger.name %>
+    Email: <%= @passenger.email %>
+    
+Booking Details:
+    Booking ID: <%= @booking.id %>
+    Flight ID: <%= @flight.id %>
+    
+    Travelling From: <%= @flight.from_airport.code %>   
+                   To: <%= @flight.to_airport.code %>
+    Date of travel: <%= @flight.start_time.strftime("%d-%m-%Y") %>
+
+Thank you for travelling with us.
+Have a happy journey.

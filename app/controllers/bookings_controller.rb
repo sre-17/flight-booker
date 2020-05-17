@@ -11,6 +11,11 @@ class BookingsController < ApplicationController
         @flight = Flight.find(params[:flight_id])
         @booking = @flight.bookings.build(booking_params)
         if @booking.save
+            passengers = Passenger.where("booking_id = ?" , @booking.id)
+            passengers.each do |passenger|
+                PassengerMailer.with(passenger: passenger, booking: @booking, flight: @flight).thankyou_mail.deliver_now
+            end
+
             render 'show'
         else
             render 'new'
